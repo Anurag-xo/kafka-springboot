@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class CreateProductRestModel {
 
   private String title;
-  private double price;
+  private BigDecimal price;
   private int quantity;
 
 
@@ -15,13 +15,13 @@ public class CreateProductRestModel {
   public void setTitle(String title) {
     this.title = title;
   }
-  public double getPrice() {
+  public BigDecimal getPrice() {
     return price;
   }
-  public void setPrice(double price) {
+  public void setPrice(BigDecimal price) {
     this.price = price;
   }
-  public int getQuantitiy() {
+  public int getQuantity() {
     return quantity;
   }
   public void setQuantity(int quantity) {

@@ -23,28 +23,46 @@ public class ProductServiceImpl implements ProductService {
   }
 
   @Override
-  public String createProduct(CreateProductRestModel ProductRestModel) {
+  public String createProduct(CreateProductRestModel ProductRestModel) throws Exception {
 
     String productId = UUID.randomUUID().toString();
 
     //TODO: Presist Product details into database table before publishing an Event.
 
-    ProductCreatedEvent productCreatedEvent = new ProductCreatedEvent(productId,
-        productRestModel.getTitle(), productRestModel.getPrice(),
-        productRestModel.getQuantity());
+    ProductCreatedEvent productCreatedEvent = new ProductCreatedEvent(
+        productId,
+        ProductRestModel.getTitle(),
+        ProductRestModel.getPrice(),
+        ProductRestModel.getQuantity()
+    );
 
-    CompletableFuture<SendResult<String, ProductCreatedEvent>> future = 
-      kafkaTemplate.send("product-created-events-topic", productId, productCreatedEvent);
+    LOGGER.info("Before publishing ProductCreatedEvent");
 
-    future.whenComplete((result, exception) -> {
 
-      if(exception != null) {
-        LOGGER.error("********** Failed to send message: " + exception.getMessage());
-      } else {
-        LOGGER.info("********** Message sent successfully: " + result.getRecordMetadata());
-      }
-    });
+// Synchronous Methond
+    SendResult<String, ProductCreatedEvent> result = kafkaTemplate
+      .send("products-created-events-topic", productId, productCreatedEvent)
+      .get();
 
+    // Asynchronous way of doing it
+    //
+    // CompletableFuture<SendResult<String, ProductCreatedEvent>> future = 
+    //   kafkaTemplate.send("products-created-events-topic", productId, productCreatedEvent);
+    //
+    // future.whenComplete((result, exception) -> {
+    //
+    //   if(exception != null) {
+    //     LOGGER.error("********** Failed to send message: " + exception.getMessage());
+    //   } else {
+    //     LOGGER.info("********** Message sent successfully: " + result.getRecordMetadata());
+    //   }
+    // });
+
+    // If you add this line the code becomes sysnchronous but if you remove, it becomes asynchronous.
+    // future.join();
+    LOGGER.info("Partition: " + result.getRecordMetadata().partition());
+    LOGGER.info("Topic: " + result.getRecordMetadata.topic());
+    LOGGER.info("Offset: " + result.getRecordMetadata.offset());   
     LOGGER.info("********** Returning product id");
 
     return productId;
