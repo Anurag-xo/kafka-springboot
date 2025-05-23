@@ -1,4 +1,3 @@
-````markdown
 # Products Microservice with Spring Boot and Kafka
 
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
@@ -50,6 +49,7 @@ A production-ready microservice for product management with event-driven archite
 git clone https://github.com/yourusername/anurag-xo-kafka-springboot.git
 cd anurag-xo-kafka-springboot
 ```
+
 ````
 
 ### 2. Start Kafka
@@ -198,3 +198,4 @@ The formatting uses:
 
 Would you like me to add any additional sections like deployment instructions, monitoring setup, or environment variables configuration?
 ```
+````
