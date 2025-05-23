@@ -61,8 +61,8 @@ public class ProductServiceImpl implements ProductService {
     // If you add this line the code becomes sysnchronous but if you remove, it becomes asynchronous.
     // future.join();
     LOGGER.info("Partition: " + result.getRecordMetadata().partition());
-    LOGGER.info("Topic: " + result.getRecordMetadata.topic());
-    LOGGER.info("Offset: " + result.getRecordMetadata.offset());   
+    LOGGER.info("Topic: " + result.getRecordMetadata().topic());
+    LOGGER.info("Offset: " + result.getRecordMetadata().offset());   
     LOGGER.info("********** Returning product id");
 
     return productId;
