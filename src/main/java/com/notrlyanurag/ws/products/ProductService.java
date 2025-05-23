@@ -1,7 +1,7 @@
-package com.notrlyanurag.ws.products.service;
+package com.notrlyanurag.ws.products;
 
-import com.appsdeveloperblog.ws.products.rest.CreateProductRestModel;
+// import com.notrlyanurag.ws.products.CreateProductRestModel;
 
 public interface ProductService {
-  String createProduct(CreateProductRestModel CreateProductRestModel);
+  String createProduct(CreateProductRestModel productRestModel);
 }

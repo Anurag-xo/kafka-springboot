@@ -1,4 +1,4 @@
-package com.notrlyanurag.ws.products.service;
+package com.notrlyanurag.ws.products;
 
 import java.math.BigDecimal;
 

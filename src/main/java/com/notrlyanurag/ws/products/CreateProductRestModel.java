@@ -1,30 +1,30 @@
-package com.notrlyanurag.ws.products.rest;
+package com.notrlyanurag.ws.products;
 
 import java.math.BigDecimal;
 
 public class CreateProductRestModel {
 
-  private string title;
-  private BigDecimal price;
-  private Integer quantity;
+  private String title;
+  private double price;
+  private int quantity;
 
 
-  public static getTitle() {
+  public String getTitle() {
     return title;
   }
-  public void setTitle(string title) {
+  public void setTitle(String title) {
     this.title = title;
   }
-  public BigDecimal getPrice() {
+  public double getPrice() {
     return price;
   }
-  public void setPrice(BigDecimal price) {
+  public void setPrice(double price) {
     this.price = price;
   }
-  public Integer getQuantitiy() {
+  public int getQuantitiy() {
     return quantity;
   }
-  public void setQuantity(Integer quantity) {
+  public void setQuantity(int quantity) {
     this.quantity = quantity;
   }
 }

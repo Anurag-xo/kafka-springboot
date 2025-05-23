@@ -1,4 +1,4 @@
-package com.notrlyanurag.ws.products.rest;
+package com.notrlyanurag.ws.products;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.notrlyanurag.ws.products.service.ProductService;
+import com.notrlyanurag.ws.products.CreateProductRestModel;
 
 @RestController
 @RequestMapping("/products") //http://localhost:<port>/products

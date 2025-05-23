@@ -1,11 +1,16 @@
-package com.notrlyanurag.ws.products.service;
+package com.notrlyanurag.ws.products;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import java.util.concurrent.CompletableFuture;
+import org.springframework.kafka.support.SendResult;
 
 import java.util.UUID;
 
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import com.notrlyanurag.ws.products.rest.CreateProductRestModel;
+import com.notrlyanurag.ws.products.CreateProductRestModel;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -17,7 +22,7 @@ public class ProductServiceImpl implements ProductService {
     this.kafkaTemplate = kafkaTemplate;
   }
 
-  @Overrride
+  @Override
   public String createProduct(CreateProductRestModel ProductRestModel) {
 
     String productId = UUID.randomUUID().toString();
