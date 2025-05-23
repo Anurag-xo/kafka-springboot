@@ -48,9 +48,8 @@ A production-ready microservice for product management with event-driven archite
 ```bash
 git clone https://github.com/yourusername/anurag-xo-kafka-springboot.git
 cd anurag-xo-kafka-springboot
-```
 
-````
+```
 
 ### 2. Start Kafka
 
@@ -173,29 +172,4 @@ This project is licensed under the [Apache License 2.0](LICENSE).
 
 ---
 
-**Maintained by**: [Anurag-xp] | anuragrk04@gmail.com
-
-```
-
-This README includes:
-1. GitHub badges for key technologies
-2. Table of contents with anchor links
-3. Clear feature list with emoji bullets
-4. Detailed tech stack information
-5. Step-by-step quick start guide
-6. Complete API documentation
-7. Kafka configuration details
-8. Development guidelines
-9. Contribution instructions
-10. License information
-
-The formatting uses:
-- Proper Markdown syntax for GitHub rendering
-- Code blocks with syntax highlighting
-- Emojis for better visual scanning
-- Clear section headers
-- Consistent spacing and structure
-
-Would you like me to add any additional sections like deployment instructions, monitoring setup, or environment variables configuration?
-```
-````
+**Maintained by**: [Anurag-xo] | anuragrk04@gmail.com
