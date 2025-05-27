@@ -1,16 +1,11 @@
 package com.notrlyanurag.ws.products;
 
+import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.util.concurrent.CompletableFuture;
-import org.springframework.kafka.support.SendResult;
-
-import java.util.UUID;
-
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
-
-import com.notrlyanurag.ws.products.CreateProductRestModel;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -27,26 +22,24 @@ public class ProductServiceImpl implements ProductService {
 
     String productId = UUID.randomUUID().toString();
 
-    //TODO: Presist Product details into database table before publishing an Event.
+    // TODO: Presist Product details into database table before publishing an Event.
 
-    ProductCreatedEvent productCreatedEvent = new ProductCreatedEvent(
-        productId,
-        ProductRestModel.getTitle(),
-        ProductRestModel.getPrice(),
-        ProductRestModel.getQuantity()
-    );
+    ProductCreatedEvent productCreatedEvent =
+        new ProductCreatedEvent(
+            productId,
+            ProductRestModel.getTitle(),
+            ProductRestModel.getPrice(),
+            ProductRestModel.getQuantity());
 
     LOGGER.info("Before publishing ProductCreatedEvent");
 
-
-// Synchronous Methond
-    SendResult<String, ProductCreatedEvent> result = kafkaTemplate
-      .send("products-created-events-topic", productId, productCreatedEvent)
-      .get();
+    // Synchronous Methond
+    SendResult<String, ProductCreatedEvent> result =
+        kafkaTemplate.send("products-created-events-topic", productId, productCreatedEvent).get();
 
     // Asynchronous way of doing it
     //
-    // CompletableFuture<SendResult<String, ProductCreatedEvent>> future = 
+    // CompletableFuture<SendResult<String, ProductCreatedEvent>> future =
     //   kafkaTemplate.send("products-created-events-topic", productId, productCreatedEvent);
     //
     // future.whenComplete((result, exception) -> {
@@ -58,12 +51,14 @@ public class ProductServiceImpl implements ProductService {
     //   }
     // });
 
-    // If you add this line the code becomes sysnchronous but if you remove, it becomes asynchronous.
+    // If you add this line the code becomes sysnchronous but if you remove, it becomes
+    // asynchronous.
     // future.join();
     LOGGER.info("Partition: " + result.getRecordMetadata().partition());
     LOGGER.info("Topic: " + result.getRecordMetadata().topic());
-    LOGGER.info("Offset: " + result.getRecordMetadata().offset());   
+    LOGGER.info("Offset: " + result.getRecordMetadata().offset());
     LOGGER.info("********** Returning product id");
 
     return productId;
-  } }
+  }
+}
