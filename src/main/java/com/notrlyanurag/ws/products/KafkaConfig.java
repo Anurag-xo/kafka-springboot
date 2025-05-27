@@ -84,6 +84,7 @@
 
 package com.notrlyanurag.ws.products;
 
+import com.notrlyanurag.ws.core.ProductCreatedEvent;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.kafka.clients.admin.NewTopic;
@@ -94,7 +95,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.core.ProducerFactory;
 
 @Configuration
 public class KafkaConfig {
@@ -144,12 +144,12 @@ public class KafkaConfig {
   }
 
   @Bean
-  public ProducerFactory<String, String> producerFactory() {
+  public ProductCreatedEvent<String, ProductCreatedEvent> producerFactory() {
     return new DefaultKafkaProducerFactory<>(producerConfigs());
   }
 
   @Bean
-  public KafkaTemplate<String, String> kafkaTemplate() {
+  public KafkaTemplate<String, ProductCreatedEvent> kafkaTemplate() {
     return new KafkaTemplate<>(producerFactory());
   }
 
