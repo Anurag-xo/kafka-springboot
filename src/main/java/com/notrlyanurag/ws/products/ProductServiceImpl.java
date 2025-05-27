@@ -1,5 +1,6 @@
 package com.notrlyanurag.ws.products;
 
+import com.notrlyanurag.ws.core.ProductCreatedEvent;
 import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -30,7 +30,12 @@
 		<java.version>17</java.version>
 	</properties>
   <dependencies>
-        <!-- SLF4J -->
+    <!-- SLF4J -->
+    <dependency>
+	      <groupId>com.notrlyanurag.ws</groupId>
+	      <artifactId>core</artifactId>
+	      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
     <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
