@@ -115,10 +115,10 @@ public class KafkaConfig {
   @Value("${spring.kafka.producer.properties.delivery.timeout.ms}")
   private String deliveryTimeout;
 
-  @Value("${spring.kafka.producer.linger.ms}")
+  @Value("${spring.kafka.producer.properties.linger.ms}")
   private String linger;
 
-  @Value("${spring.kafka.producer.request.timeout.ms}")
+  @Value("${spring.kafka.producer.properties.request.timeout.ms}")
   private String requestTimeout;
 
   @Value("${spring.kafka.properties.enable.idempotence}")
