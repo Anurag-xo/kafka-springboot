@@ -172,4 +172,4 @@ This project is licensed under the [Apache License 2.0](LICENSE).
 
 ---
 
-**Maintained by**: [Anurag-xo] | anuragrk04@gmail.com
+**Maintained by**: [Anurag-xo] | anuragrk042004@gmail.com
