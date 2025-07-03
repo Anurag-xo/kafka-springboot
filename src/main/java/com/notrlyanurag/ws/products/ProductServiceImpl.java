@@ -2,6 +2,7 @@ package com.notrlyanurag.ws.products;
 
 import com.notrlyanurag.ws.core.ProductCreatedEvent;
 import java.util.UUID;
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -34,9 +35,16 @@ public class ProductServiceImpl implements ProductService {
 
     LOGGER.info("Before publishing ProductCreatedEvent");
 
+    // Adding a unique ID to a message Header.
+    ProducerRecord<String, ProductCreatedEvent> record =
+        new ProducerRecord<>("products-created-events-topic", productId, productCreatedEvent);
+    record.headers().add("messageId", UUID.randomUUID().toString().getBytes());
+
     // Synchronous Methond
     SendResult<String, ProductCreatedEvent> result =
-        kafkaTemplate.send("products-created-events-topic", productId, productCreatedEvent).get();
+        // kafkaTemplate.send("products-created-events-topic", productId,
+        // productCreatedEvent).get();
+        kafkaTemplate.send(record).get();
 
     // Asynchronous way of doing it
     //
