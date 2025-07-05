@@ -16,5 +16,10 @@ import org.springframework.test.context.ActiveProfiles;
 public class ProductServiceintegraionTest {
 
   @Test
-  void testCreateProduct_whenGivenValidProductDetails_successfullSendsKafkaMessage() {}
+  void testCreateProduct_whenGivenValidProductDetails_successfullSendsKafkaMessage() {
+
+    // arrange
+    // act
+    // assert
+  }
 }
