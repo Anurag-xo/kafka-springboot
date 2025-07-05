@@ -1,7 +1,10 @@
 package com.notrlyanurag.ws.products;
 
+import java.math.BigDecimal;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.test.annotation.DirtiesContext;
@@ -15,11 +18,28 @@ import org.springframework.test.context.ActiveProfiles;
     properties = "spring.kafka.producer.bootstrap-servers=${spring.emmbedded.kafka.brokers}")
 public class ProductServiceintegraionTest {
 
+  @Autowired
+  private ProductService productService;
+
   @Test
   void testCreateProduct_whenGivenValidProductDetails_successfullSendsKafkaMessage() {
 
-    // arrange
-    // act
+    // Arrange
+
+    String title="iPhone 11";
+    BigDecimal price = new BigDecimal(600);
+    Integer quantity = 1;
+
+    CreateProductRestModel createProductRestModel = new CreateProductRestModel();
+    createProductRestModel.setPrice(price);
+    createProductRestModel.setQuantity(quantity);
+    createProductRestModel.setTitle(title);
+
+    // Act
+    productService.createProduct(CreateProductRestModel);
+
+
+
     // assert
   }
 }
